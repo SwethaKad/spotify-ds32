@@ -11,8 +11,8 @@ from spotipy.oauth2 import SpotifyClientCredentials
 # SPOTIFY_API_KEY_SECRET = "01308ac191ae470bb70d1aa5c01e8fb8"
 
 # Get API keys from .env
-SPOTIFY_API_KEY = getenv("SPOTIFY_API_KEY")
-SPOTIFY_API_KEY_SECRET = getenv("SPOTIFY_API_KEY_SECRET")
+SPOTIFY_API_KEY = getenv('SPOTIFY_API_KEY')
+SPOTIFY_API_KEY_SECRET = getenv('SPOTIFY_API_KEY_SECRET')
 
 
 class SpotifyAPI(object):
@@ -122,7 +122,8 @@ class SpotifyAPI(object):
 
 
 # Instantiate Spotify API object
-auth_manager = SpotifyClientCredentials(SPOTIFY_API_KEY, SPOTIFY_API_KEY_SECRET)
+auth_manager = SpotifyClientCredentials(
+    SPOTIFY_API_KEY, SPOTIFY_API_KEY_SECRET)
 spotiPY = spotipy.Spotify(auth_manager=auth_manager)
 spotify = SpotifyAPI(SPOTIFY_API_KEY, SPOTIFY_API_KEY_SECRET)
 
@@ -181,7 +182,8 @@ def retrieve_audio_features(spotify_id):
     'time_signature': 4}]
     """
 
-    auth_manager = SpotifyClientCredentials(SPOTIFY_API_KEY, SPOTIFY_API_KEY_SECRET)
+    auth_manager = SpotifyClientCredentials(
+        SPOTIFY_API_KEY, SPOTIFY_API_KEY_SECRET)
     spotiPY = spotipy.Spotify(auth_manager=auth_manager)
 
     audio_features = spotiPY.audio_features(tracks=[spotify_id])

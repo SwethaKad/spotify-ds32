@@ -8,8 +8,7 @@ DB = SQLAlchemy()
 class Recommendations(DB.Model):
     """
     Creates a Recommendations Table with SQlAlchemy.
-    This is useful for jinja2 HTML formatting in
-    the 'recommendations.html' file.
+    This is useful for jinja2 HTML formatting in the 'recommendations.html' file.
     """
 
     id = DB.Column(DB.BigInteger, primary_key=True)
@@ -18,15 +17,13 @@ class Recommendations(DB.Model):
 
 def find_recommendations(input_feature_vector):
     # Load locally stored pickled model
-    model = pickle.load(open("spotify/app_folder/Spotify_model_new", "rb"))
+    model = pickle.load(open('spotify/app_folder/Spotify_model_new', 'rb'))
 
     # Read in spotify data from csv
     songs = pd.read_csv("spotify/app_folder/song_artist.csv")
 
-    # Query the model using the features from the user's
-    # selected song
-    # Model will return the indices of the 10 most similar songs that it finds
-    # within the 100,000 rows
+    # Query the model using the features from the user's selected song
+    # Model will return the indices of the 10 most similar songs that it finds within the 100,000 rows
     dist, ind = model.kneighbors([input_feature_vector])
 
     # Convert 'indices' output from array type to list

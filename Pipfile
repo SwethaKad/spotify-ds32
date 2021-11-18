@@ -13,10 +13,12 @@ jinja2 = "*"
 pandas = "*"
 scikit-learn = "*"
 python-dotenv = "*"
+gunicorn = "*"
 
 [dev-packages]
 black = "*"
 flake8 = "*"
+autopep8 = "*"
 
 [requires]
 python_version = "3.9"
